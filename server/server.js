@@ -1,6 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
 import authRoutes from './routes/authRoutes.js';
+import messageRoutes from './routes/messageRoutes.js';
 import connectDB from './db/connectMongoDB.js';
 import cookieParser from 'cookie-parser';
 
@@ -18,6 +19,7 @@ app.use(cookieParser()); // to parse incoming request with
 
 //Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/message', messageRoutes)
 
 app.listen(PORT, () => {
   connectDB();

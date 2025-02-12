@@ -32,7 +32,7 @@ const userSchema = new Schema({
     default: '',
   }
   
-})
+}, { timestamps: true });
 
 userSchema.pre('save', async function(next) {
   if(!this.isModified('password')) {
@@ -47,4 +47,5 @@ userSchema.methods.matchPassword = async function(enteredPassword) {
 }
 
 const User = mongoose.model('User', userSchema);
+
 export default User;
