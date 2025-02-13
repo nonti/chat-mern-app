@@ -3,7 +3,6 @@ import Message from "../models/messageModel.js";
 
 export const sendMessage = async (req, res) => {
   try {
-    const { id } = req.params;
     const { message } = req.body;
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
@@ -29,13 +28,40 @@ export const sendMessage = async (req, res) => {
       conversation.messages.push(newMessage._id)
     }
     
-    await conversation.save();
-    await newMessage.save();
 
+    //Socket IO
+
+    // await conversation.save();
+    // await newMessage.save();
+
+
+
+    //This will run in parallel at the same time
+    await Promise.all([conversation.save(), newMessage.save()]);
     res.status(201).json(newMessage);
 
   } catch (error) {
     console.error('Error in sending message:', error.message);
+    res.status(500).json({ message: error.message });
+  }
+}
+
+export const getMessages = async (req, res) => {
+  try {
+    const { id: userToChatId} = req.params;
+    const senderId = req.user._id;
+
+    const conversation = await Conversation.findOne({
+      participants: {$all: [senderId, userToChatId]}
+    }).populate('messages'); // not referenced but actual message
+
+    if(!conversation) return res.status(404).json([]);
+
+    const messages = conversation.messages;
+
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error('Error in getMessage controller:', error.message);
     res.status(500).json({ message: error.message });
   }
 }
