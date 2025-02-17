@@ -1,10 +1,10 @@
 
-import { IoSearchSharp } from "react-icons/io5";
+import { IoSearchSharp } from 'react-icons/io5';
 const SearchInput = () => {
   return (
-    <form className="flex items-center mt-2 gap-2">
+    <form className='flex items-center mt-2 gap-2'>
       <input type='text' placeholder='Search...' className='input input-bordered rounded-full'/>
-      <button type='submit' className='btn btn-circle bg-sky-500 text-white border-none outline-none'><IoSearchSharp className="h-6 w-6 outline-none"/></button>
+      <button type='submit' className='btn btn-circle bg-sky-500 text-white border-none outline-none'><IoSearchSharp className='h-6 w-6 outline-none'/></button>
     </form>
   )
 }
@@ -13,12 +13,12 @@ export default SearchInput
 
 
 
-// import { IoSearchSharp } from "react-icons/io5";
+// import { IoSearchSharp } from 'react-icons/io5';
 // const SearchInput = () => {
 //   return (
-//     <form className="flex items-center mt-2 gap-2">
+//     <form className='flex items-center mt-2 gap-2'>
 //       <input type='text' placeholder='Search...' className='input input-bordered rounded-full'/>
-//       <button type='submit' className='btn btn-circle bg-sky-500 text-white border-none outline-none'><IoSearchSharp className="h-6 w-6 outline-none"/></button>
+//       <button type='submit' className='btn btn-circle bg-sky-500 text-white border-none outline-none'><IoSearchSharp className='h-6 w-6 outline-none'/></button>
 //     </form>
 //   )
 // }

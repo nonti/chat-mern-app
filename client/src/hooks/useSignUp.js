@@ -1,11 +1,11 @@
-import toast from "react-hot-toast";
-import { useState } from "react";
-import { useAuthContext } from "../context/AuthContext";
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import { useAuthContext } from '../context/AuthContext';
 const useSignUp = () => {
  const [loading, setLoading] = useState(false);
  const { setAuthUser}= useAuthContext();
 
- const signup = async({fullName, username,email, password, confirmPassword, gender}) => {
+ const signup = async({fullName, username, email, password, confirmPassword, gender}) => {
     const success = handleInputErrors({fullName, username,email, password, confirmPassword, gender});
     if(!success) return;
 
@@ -40,19 +40,19 @@ const useSignUp = () => {
 export default useSignUp
 
 
-const handleInputErrors = ({fullName, username,email, password, confirmPassword, gender}) => {
+const handleInputErrors = ({fullName, username, email, password, confirmPassword, gender}) => {
   if(!fullName || !username || !email || !password || !confirmPassword || !gender) {
-    toast.error("Please fill all the fields");
+    toast.error('Please fill all the fields');
     return false;
   }
   
   if(password !== confirmPassword) {
-    toast.error("Passwords do not match");
+    toast.error('Passwords do not match');
     return false;
   }
 
   if(password.length < 6) {
-    toast.error("Password must be at least 6 characters");
+    toast.error('Password must be at least 6 characters');
     return false;
   }
 

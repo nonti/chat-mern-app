@@ -18,7 +18,9 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json()); // to parse incoming request with JSON payload from the request body
 app.use(express.urlencoded({ extended: true })); // to parse incoming request with url-encoded payload from the request body
 app.use(cookieParser()); // to parse incoming request with
-app.use(cors({ credentials: true})); // to allow cross-origin requests
+app.use(cors({
+  credentials: true,
+})); // to allow cross-origin requests
 
 
 //Routes
