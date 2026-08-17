@@ -2,9 +2,12 @@
   "name": "chat-mern-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
+    "release:patch": "npm version patch && git push --follow-tags",
+    "release:minor": "npm version minor && git push --follow-tags",
+    "release:major": "npm version major && git push --follow-tags",
     "start": "nodemon server/server.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run start\" \"npm run client\""
@@ -21,7 +24,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
     "moongose": "^1.0.0",
-    "socket-io": "^1.0.0"
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

@@ -7,20 +7,15 @@ import userRoutes from './routes/userRoutes.js';
 
 import connectDB from './db/connectMongoDB.js';
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
+import {app, server} from './socket/socket.js';
 
-
-const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 
 //Middleware
 app.use(express.json()); // to parse incoming request with JSON payload from the request body
 app.use(express.urlencoded({ extended: true })); // to parse incoming request with url-encoded payload from the request body
 app.use(cookieParser()); // to parse incoming request with
-app.use(cors({
-  credentials: true,
-})); // to allow cross-origin requests
 
 
 //Routes
@@ -28,7 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/message', messageRoutes);
 app.use('/api/users', userRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
   console.info(`Server is running on port ${PORT}`);
 });
